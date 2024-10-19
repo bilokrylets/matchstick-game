@@ -22,6 +22,14 @@ export default function SettingScreen() {
     );
   }
 
+  const maxPickRange = Math.ceil(startMatches / 2) - 1;
+
+  function changeStartMatches(e) {
+    setStartMatches(e.target.value);
+
+    if (maxMatchPerTurn > maxPickRange) setMaxMatchPerTurn(maxPickRange);
+  }
+
   return (
     <div>
       <h2>Matchstick game settings:</h2>
@@ -33,7 +41,7 @@ export default function SettingScreen() {
             value={startMatches}
             min={3}
             max={51}
-            onChange={(e) => setStartMatches(+e.target.value)}
+            onChange={(e) => changeStartMatches(e)}
           />
         </div>
         <div className={styles.form__block}>
@@ -41,8 +49,8 @@ export default function SettingScreen() {
           <input
             type="range"
             value={maxMatchPerTurn}
-            min={3}
-            max={Math.ceil(startMatches / 2) - 1}
+            min={1}
+            max={maxPickRange}
             onChange={(e) => setMaxMatchPerTurn(+e.target.value)}
           />
         </div>
