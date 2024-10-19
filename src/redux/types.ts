@@ -1,5 +1,5 @@
 export type InitialStateType = {
-  gameStatus: 'game' | 'finish';
+  gameStatus: 'settings' | 'game' | 'finish';
   remainingMatches: number;
   maxTurnPick: number;
   playerMatches: number;

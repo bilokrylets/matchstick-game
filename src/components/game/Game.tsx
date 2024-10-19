@@ -1,11 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { AppDispatch } from '../../redux/store';
-import {
-  computerTurn,
-  finishGame,
-  playerTurn,
-  selectGame,
-} from '../../redux/gameSlice';
+import { computerTurn, playerTurn, selectGame } from '../../redux/gameSlice';
 import styles from './game.module.scss';
 import { useEffect } from 'react';
 import { computerTurnPick } from '../../utils/computerTurnPick';
