@@ -7,6 +7,9 @@ import {
   selectGame,
 } from '../../redux/gameSlice';
 import styles from './game.module.scss';
+import { useEffect } from 'react';
+import { computerTurnPick } from '../../utils/computerTurnPick';
+import FinishScreen from '../finishScreen/FinishScreen';
 
 export default function Game() {
   const {
@@ -18,7 +21,28 @@ export default function Game() {
   } = useSelector(selectGame);
   const dispatch: AppDispatch = useDispatch();
 
-  if (remainingMatches <= 0) dispatch(finishGame());
+  useEffect(() => {
+    if (currentTurn === 'player') return;
+
+    const computerPick = computerTurnPick(
+      remainingMatches,
+      computerMatches,
+      playerMatches,
+      maxTurnPick,
+    );
+    console.log(computerPick);
+
+    dispatch(computerTurn(computerPick));
+  }, [
+    computerMatches,
+    currentTurn,
+    dispatch,
+    maxTurnPick,
+    playerMatches,
+    remainingMatches,
+  ]);
+
+  if (remainingMatches <= 0) return <FinishScreen />;
 
   return (
     <div>
