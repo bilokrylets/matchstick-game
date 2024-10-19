@@ -1,14 +1,15 @@
-import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import './App.css';
+import Game from './components/game/Game';
+import { selectGame } from './redux/gameSlice';
+import FinishScreen from './components/finishScreen/FinishScreen';
 
 function App() {
-  const [count, setCount] = useState(0);
-
+  const { gameStatus } = useSelector(selectGame);
   return (
     <>
-      <button onClick={() => setCount((count) => count + 1)}>
-        count is {count}
-      </button>
+      {gameStatus === 'game' && <Game />}
+      {gameStatus === 'finish' && <FinishScreen />}
     </>
   );
 }

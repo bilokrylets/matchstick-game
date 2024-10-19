@@ -1,0 +1,14 @@
+.opponents {
+  display: flex;
+  justify-content: space-between;
+}
+
+.disable {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+button:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
