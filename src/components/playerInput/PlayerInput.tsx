@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { playerTurn, selectGame } from '../../redux/gameSlice';
 import { AppDispatch } from '../../redux/store';
 import { useState } from 'react';
+import Button from '../UI/Button/Button';
 
 export default function PlayerInput() {
   const { remainingMatches, maxTurnPick } = useSelector(selectGame);
@@ -18,13 +19,13 @@ export default function PlayerInput() {
   return (
     <div>
       {buttons.map((value) => (
-        <button
+        <Button
           key={value}
           disabled={remainingMatches < value}
           onClick={() => dispatch(playerTurn(value))}
         >
           {value}
-        </button>
+        </Button>
       ))}
       {isCustomPick && (
         <>
