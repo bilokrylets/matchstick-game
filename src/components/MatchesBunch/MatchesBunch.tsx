@@ -23,18 +23,17 @@ export default function MatchesBunch({ matches }: MatchesBunchProps) {
       () => ({
         rotation: Math.random() * 360,
         coordinateX: Math.random() * 50,
-        coordinateY: Math.random() * 50,
+        coordinateY: Math.random() * 20,
       }),
     );
     setMatchesCoordinates(initialMatches);
   }, [startMatches]);
 
-  console.log(matchesCoordinates);
-
   return (
     <div className={styles.bunch}>
       {matchesCoordinates.map((match, index) => (
         <Match
+          key={index}
           rotation={match.rotation}
           coordinateX={match.coordinateX}
           coordinateY={match.coordinateY}

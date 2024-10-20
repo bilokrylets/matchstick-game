@@ -6,6 +6,7 @@ type Props = {
   coordinateY: number;
   isHidden: boolean;
 };
+
 export default function Match({
   rotation,
   coordinateX,

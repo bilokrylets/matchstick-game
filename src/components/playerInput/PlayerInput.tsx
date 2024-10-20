@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { playerTurn, selectGame } from '../../redux/gameSlice';
 import { AppDispatch } from '../../redux/store';
 import { useState } from 'react';
+import styles from './playerInput.module.scss';
 import Button from '../UI/Button/Button';
 
 export default function PlayerInput() {
@@ -14,31 +15,50 @@ export default function PlayerInput() {
     (_, index) => index + 1,
   );
 
+  function handleCustomPick(e: React.ChangeEvent<HTMLInputElement>) {
+    const value = +e.target.value;
+    if (value > maxTurnPick) {
+      setCustomPick(maxTurnPick);
+    } else {
+      setCustomPick(value);
+    }
+  }
+
   const isCustomPick = maxTurnPick > 5 && remainingMatches > 5;
 
   return (
-    <div>
-      {buttons.map((value) => (
-        <Button
-          key={value}
-          disabled={remainingMatches < value}
-          onClick={() => dispatch(playerTurn(value))}
-        >
-          {value}
-        </Button>
-      ))}
+    <div className={styles.playerInput}>
+      <p className={styles.label}>Pick matchsticks:</p>
+      <div className={styles.buttonBlock}>
+        {buttons.map((value) => (
+          <Button
+            key={value}
+            disabled={remainingMatches < value}
+            onClick={() => dispatch(playerTurn(value))}
+          >
+            {value}
+          </Button>
+        ))}
+      </div>
       {isCustomPick && (
-        <>
-          <p>add custom amount from 1 to {maxTurnPick} </p>
-          <input
-            type="number"
-            value={customPick}
-            onChange={(e) => setCustomPick(+e.target.value)}
-            min={1}
-            max={maxTurnPick}
-          />
-          <button onClick={() => dispatch(playerTurn(customPick))}>pick</button>
-        </>
+        <div className={styles.customPick}>
+          <p className={styles.label}>
+            OR add custom amount from 1 to {maxTurnPick}{' '}
+          </p>
+          <span>
+            <input
+              className={styles.pickInput}
+              type="number"
+              value={customPick}
+              onChange={(e) => handleCustomPick(e)}
+              min={1}
+              max={maxTurnPick}
+            />
+            <Button onClick={() => dispatch(playerTurn(customPick))}>
+              Pick
+            </Button>
+          </span>
+        </div>
       )}
     </div>
   );

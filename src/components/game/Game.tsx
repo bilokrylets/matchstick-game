@@ -4,8 +4,8 @@ import { computerTurn, selectGame } from '../../redux/gameSlice';
 import styles from './game.module.scss';
 import { useEffect } from 'react';
 import { computerTurnPick } from '../../utils/computerTurnPick';
-import FinishScreen from '../finishScreen/FinishScreen';
-import GamerCard from './GamerCard';
+import FinishScreen from '../FinishScreen/FinishScreen';
+import GamerCard from './GamerCard/GamerCard';
 import MatchesBunch from '../MatchesBunch/MatchesBunch';
 
 export default function Game() {
@@ -27,7 +27,6 @@ export default function Game() {
       playerMatches,
       maxTurnPick,
     );
-    console.log(computerPick);
 
     dispatch(computerTurn(computerPick));
   }, [
@@ -42,12 +41,24 @@ export default function Game() {
   if (remainingMatches <= 0) return <FinishScreen />;
 
   return (
-    <div>
-      <h2>There is {remainingMatches} matchsticks remaining</h2>
-      <MatchesBunch matches={remainingMatches} />
-      <h4>{currentTurn} turn</h4>
+    <div className={styles.game}>
+      <h2 className={styles.title}>
+        There is {remainingMatches} matchsticks remaining
+      </h2>
 
-      <div className={styles.opponents}>
+      <MatchesBunch matches={remainingMatches} />
+
+      <h4
+        className={`${styles.currentTurn} ${
+          currentTurn === 'player'
+            ? styles.currentTurn_player
+            : styles.currentTurn_computer
+        }  `}
+      >
+        {currentTurn} turn
+      </h4>
+
+      <div className={styles.players}>
         <GamerCard label="Player 🙍‍♂️" status="player" />
 
         <GamerCard label="💻 Computer" status="computer" />

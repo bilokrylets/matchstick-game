@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 import './App.scss';
-import Game from './components/game/Game';
+import Game from './components/Game/Game';
 import { selectGame } from './redux/gameSlice';
-import SettingScreen from './components/settingsScreen/SettingScreen';
+import SettingScreen from './components/SettingsScreen/SettingScreen';
 
 function App() {
   const { gameStatus } = useSelector(selectGame);

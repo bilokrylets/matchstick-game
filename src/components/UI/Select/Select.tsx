@@ -18,7 +18,9 @@ export default function Select({
       <label>{label}</label>
       <select className={styles.select} value={value} onChange={onChange}>
         {options.map((option) => (
-          <option value={option.value}>{option.label}</option>
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
         ))}
       </select>
     </div>

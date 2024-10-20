@@ -1,0 +1,39 @@
+.playerInput {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.buttonBlock {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.label {
+  margin: 5px 0;
+}
+
+.customPick {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.pickInput {
+  background-color: #1a1a1a;
+  color: #fff;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  padding: 5px 10px;
+  width: 150px;
+
+  &:hover,
+  &:active,
+  &:focus {
+    outline: none;
+    border-color: #646cff;
+  }
+  margin-right: 5px;
+}

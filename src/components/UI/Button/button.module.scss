@@ -13,4 +13,8 @@
   &:hover {
     border-color: #646cff;
   }
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
 }
