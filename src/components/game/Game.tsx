@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { computerTurnPick } from '../../utils/computerTurnPick';
 import FinishScreen from '../finishScreen/FinishScreen';
 import GamerCard from './GamerCard';
+import MatchesBunch from '../MatchesBunch/MatchesBunch';
 
 export default function Game() {
   const {
@@ -43,6 +44,7 @@ export default function Game() {
   return (
     <div>
       <h2>There is {remainingMatches} matchsticks remaining</h2>
+      <MatchesBunch matches={remainingMatches} />
       <h4>{currentTurn} turn</h4>
 
       <div className={styles.opponents}>

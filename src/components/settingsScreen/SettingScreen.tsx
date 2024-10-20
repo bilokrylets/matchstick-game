@@ -15,7 +15,7 @@ export default function SettingScreen() {
     e.preventDefault();
     dispatch(
       startGame({
-        remainingMatches: startMatches,
+        startMatches: startMatches,
         maxTurnPick: maxMatchPerTurn,
         currentTurn: firstTurn,
       }),

@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { selectGame } from '../../redux/gameSlice';
 import styles from './gameCard.module.scss';
 import PlayerInput from '../playerInput/PlayerInput';
+import MatchesBunch from '../MatchesBunch/MatchesBunch';
 
 type Props = {
   label: string;
@@ -16,6 +17,7 @@ export default function GamerCard({ label, status }: Props) {
   return (
     <div className={`${currentTurn !== status ? styles.disable : ''}`}>
       <h3>{label}</h3>
+      <MatchesBunch matches={isPlayer ? playerMatches : computerMatches} />
       <p>matchsticks: {isPlayer ? playerMatches : computerMatches}</p>
 
       <p>Pick matchsticks</p>

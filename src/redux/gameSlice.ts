@@ -4,6 +4,7 @@ import { InitialStateType } from './types';
 
 const initialState: InitialStateType = {
   gameStatus: 'settings',
+  startMatches: 25,
   remainingMatches: 25,
   maxTurnPick: 3,
   playerMatches: 0,
@@ -17,7 +18,8 @@ export const gameSlice = createSlice({
   reducers: {
     startGame: (state, action) => {
       state.gameStatus = 'game';
-      state.remainingMatches = action.payload.remainingMatches;
+      state.startMatches = action.payload.startMatches;
+      state.remainingMatches = action.payload.startMatches;
       state.maxTurnPick = action.payload.maxTurnPick;
       state.currentTurn = action.payload.currentTurn;
     },
