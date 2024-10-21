@@ -1,50 +1,65 @@
-# React + TypeScript + Vite
+# Matchstick Game Simulation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a simple match game where a user plays against the computer. The game starts with a customizable number of matches, and the player who ends up with an even number of matches wins. The user can choose who goes first and how many matches can be taken per turn. The game is built with **React**, **Redux Toolkit**, and **TypeScript**,
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Player vs. Computer**: The user plays against the computer, who follows an optimal strategy.
 
-## Expanding the ESLint configuration
+- **React, Redux Toolkit, & TypeScript**: The app is built with React, using Redux Toolkit for state management and TypeScript for type safety and scalability.
+- **Customizable Game Parameters**:
+  - **Number of matches**: The user can select how many matches will be in the game
+  - **Number of matches per turn**: The user can select how many matches can be taken in a turn.
+  - **Who goes first**: The user can choose whether the player or the computer goes first.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Installation
 
-- Configure the top-level `parserOptions` property like this:
+Clone the repository:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+git clone https://github.com/bilokrylets/matchstick-game.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Install dependencies:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+npm install
 ```
+
+Run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) with your browser to see the result.
+
+## Technologies Used
+
+- **React**: Front-end UI library.
+- **Redux Toolkit**: State management.
+- **SCSS**: Styling to ensure maintainability and match the provided design.
+- **TypeScript**: Programming language for application logic.
+
+## How to Play
+
+- **Choose the game settings:**
+  - Select who goes first (player or computer).
+  - Select how many matches will be in the game.
+  - Select how many matches can be taken per turn.
+- **Gameplay:**
+  - Take turns selecting the number of matches (based on your chosen settings).
+  - The computer will follow an optimal strategy to make its move.
+- **Win Condition:**
+  - The game ends when all matches are taken.
+  - The player with an even number of matches at the end wins.
+
+## Optimal Strategy
+
+The computer makes decisions based on a mathematical strategy that guarantees a win when possible. It analyzes the remaining number of matches and adjusts its move to keep the match count in its favor.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](https://opensource.org/license/mit) file for more information.
