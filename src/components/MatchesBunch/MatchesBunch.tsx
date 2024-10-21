@@ -23,7 +23,7 @@ export default function MatchesBunch({ matches }: MatchesBunchProps) {
       { length: startMatches },
       () => ({
         rotation: Math.random() * 360,
-        coordinateX: Math.random() * 50,
+        coordinateX: Math.random() * (Math.random() > 0.5 ? 50 : -50),
         coordinateY: Math.random() * 20,
       }),
     );

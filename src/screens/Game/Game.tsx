@@ -26,6 +26,8 @@ export default function Game() {
   useEffect(() => {
     if (currentTurn === 'player') return;
 
+    const computerTurnDelay = Math.random() * 1000 + 1000;
+
     setTimeout(() => {
       const computerPick = computerTurnPick(
         remainingMatches,
@@ -34,7 +36,7 @@ export default function Game() {
         maxTurnPick,
       );
       dispatch(computerTurn(computerPick));
-    }, 1000);
+    }, computerTurnDelay);
   }, [
     computerMatches,
     currentTurn,

@@ -42,7 +42,9 @@ export default function PlayerInput() {
       </div>
       {isCustomPick && (
         <div className={styles.customPick}>
-          <p className={styles.label}>Custom amount from 1 to {maxTurnPick} </p>
+          <p className={styles.label}>
+            Custom pick from 1 to {Math.min(maxTurnPick, remainingMatches)}{' '}
+          </p>
           <span className={styles.customInputContainer}>
             <input
               className={styles.pickInput}

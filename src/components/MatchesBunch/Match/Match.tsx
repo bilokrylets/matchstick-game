@@ -20,9 +20,8 @@ const Match = memo(function Match({
 
   return (
     <img
-      className={styles.match}
+      className={`${styles.match} ${isHidden && styles.match_hidden}`}
       style={matchCoordinate}
-      hidden={isHidden}
       src="match.svg"
       alt="match"
       height={100}
