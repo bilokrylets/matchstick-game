@@ -1,8 +1,9 @@
 import { useSelector } from 'react-redux';
-import { selectGame } from '../../../redux/gameSlice';
 import styles from './gamerCard.module.scss';
-import PlayerInput from '../../PlayerInput/PlayerInput';
-import MatchesBunch from '../../MatchesBunch/MatchesBunch';
+
+import MatchesBunch from '../MatchesBunch/MatchesBunch';
+import { selectGame } from '../../store/gameSlice';
+import PlayerInput from './PlayerInput/PlayerInput';
 
 type Props = {
   label: string;

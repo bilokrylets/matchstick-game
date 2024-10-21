@@ -1,13 +1,13 @@
 import { FormEvent, useState } from 'react';
-import styles from './settingScreen.module.scss';
+import styles from './settings.module.scss';
 import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../redux/store';
-import { startGame } from '../../redux/gameSlice';
-import RangeInput from '../UI/RangeInput/RangeInput';
-import Select from '../UI/Select/Select';
-import Button from '../UI/Button/Button';
+import RangeInput from '../../components/UI/RangeInput/RangeInput';
+import Select from '../../components/UI/Select/Select';
+import Button from '../../components/UI/Button/Button';
+import { startGame } from '../../store/gameSlice';
+import { AppDispatch } from '../../store/store';
 
-export default function SettingScreen() {
+export default function Settings() {
   const dispatch: AppDispatch = useDispatch();
 
   const [startMatches, setStartMatches] = useState(25);
@@ -28,8 +28,9 @@ export default function SettingScreen() {
   const maxPickRange = Math.ceil(startMatches / 2) - 1;
 
   function HandleStartMatches(e: React.ChangeEvent<HTMLInputElement>) {
-    const matchNumber =
-      +e.target.value % 2 ? +e.target.value : +e.target.value + 1;
+    let matchNumber = +e.target.value;
+    matchNumber += matchNumber % 2 ? 0 : 1;
+
     setStartMatches(matchNumber);
 
     if (maxMatchPerTurn > maxPickRange) setMaxMatchPerTurn(maxPickRange);
@@ -38,6 +39,7 @@ export default function SettingScreen() {
   return (
     <div className={styles.settingScreen}>
       <h3 className={styles.title}>Choose your game settings:</h3>
+
       <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
         <RangeInput
           value={startMatches}
@@ -45,7 +47,7 @@ export default function SettingScreen() {
           max={99}
           onChange={(e) => HandleStartMatches(e)}
         >
-          Start with {String(startMatches)} matches
+          Start with <b>{String(startMatches)}</b> matches
         </RangeInput>
 
         <RangeInput
@@ -54,7 +56,7 @@ export default function SettingScreen() {
           max={maxPickRange}
           onChange={(e) => setMaxMatchPerTurn(+e.target.value)}
         >
-          Max matches pick per turn: {maxMatchPerTurn.toString()}
+          Max matches pick per turn: <b>{maxMatchPerTurn.toString()}</b>
         </RangeInput>
 
         <Select

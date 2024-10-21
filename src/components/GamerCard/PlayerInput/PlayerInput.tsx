@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { playerTurn, selectGame } from '../../redux/gameSlice';
-import { AppDispatch } from '../../redux/store';
 import { useState } from 'react';
 import styles from './playerInput.module.scss';
-import Button from '../UI/Button/Button';
+import { selectGame, playerTurn } from '../../../store/gameSlice';
+import { AppDispatch } from '../../../store/store';
+import Button from '../../UI/Button/Button';
 
 export default function PlayerInput() {
   const { remainingMatches, maxTurnPick } = useSelector(selectGame);

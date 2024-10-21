@@ -1,8 +1,9 @@
 import { useSelector } from 'react-redux';
-import { selectGame } from '../../redux/gameSlice';
+
 import Match from './Match/Match';
 import { useMemo, useState } from 'react';
 import styles from './matchesBunch.module.scss';
+import { selectGame } from '../../store/gameSlice';
 
 type MatchCoordinate = {
   rotation: number;

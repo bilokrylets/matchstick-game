@@ -1,7 +1,8 @@
+import { ReactNode } from 'react';
 import styles from './rangeInput.module.scss';
 
 type Props = {
-  children?: string | number | string[];
+  children?: ReactNode;
   value: number;
   min: number;
   max: number;

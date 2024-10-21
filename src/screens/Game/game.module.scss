@@ -13,10 +13,15 @@
 .currentTurn {
   margin-bottom: 0px;
   font-size: 20px;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
 }
 
 .players {
   width: 100%;
   display: flex;
+  gap: 20px;
   justify-content: space-between;
 }

@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
-import { selectGame } from '../../redux/gameSlice';
+import { selectGame } from '../../store/gameSlice';
 
-export default function FinishScreen() {
+export default function Finish() {
   const { computerMatches } = useSelector(selectGame);
 
   return (

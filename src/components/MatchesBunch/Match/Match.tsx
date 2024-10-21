@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import styles from './match.module.scss';
 
 type Props = {
@@ -7,7 +8,7 @@ type Props = {
   isHidden: boolean;
 };
 
-export default function Match({
+const Match = memo(function Match({
   rotation,
   coordinateX,
   coordinateY,
@@ -27,4 +28,6 @@ export default function Match({
       height={100}
     />
   );
-}
+});
+
+export default Match;
