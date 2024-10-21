@@ -33,8 +33,8 @@ export default function Game() {
         remainingMatches,
         computerMatches,
         playerMatches,
-        maxTurnPick,
       );
+
       dispatch(computerTurn(computerPick));
     }, computerTurnDelay);
   }, [
