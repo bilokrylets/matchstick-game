@@ -16,7 +16,7 @@ export default function Finish() {
       desc: 'You can play again or start game with new settings',
     },
     computer: {
-      title: 'Defeated 🥲. Computer 🤖 win this battle ',
+      title: 'Defeated 😟. Computer 💻 win this battle ',
       desc: "Don't give up! You can try again or start game with new settings",
     },
   };

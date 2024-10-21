@@ -9,3 +9,9 @@
   padding: 10px;
   max-width: 600px;
 }
+
+@media screen and (max-width: 480px) {
+  .game_container {
+    padding: 0;
+  }
+}
