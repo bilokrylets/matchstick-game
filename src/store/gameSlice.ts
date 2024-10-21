@@ -32,10 +32,12 @@ export const gameSlice = createSlice({
       if (state.remainingMatches <= 0) state.gameStatus = 'finish';
     },
     computerTurn: (state, action) => {
-      state.remainingMatches -= action.payload;
-      state.computerMatches += action.payload;
-      state.currentTurn = 'player';
-      if (state.remainingMatches <= 0) state.gameStatus = 'finish';
+      if (state.currentTurn === 'computer') {
+        state.remainingMatches -= action.payload;
+        state.computerMatches += action.payload;
+        state.currentTurn = 'player';
+        if (state.remainingMatches <= 0) state.gameStatus = 'finish';
+      }
     },
     finishGame: (state) => {
       state.gameStatus = 'finish';

@@ -14,13 +14,8 @@ import { AppDispatch } from '../../store/store';
 import Button from '../../components/UI/Button/Button';
 
 export default function Game() {
-  const {
-    remainingMatches,
-    currentTurn,
-    computerMatches,
-    playerMatches,
-    maxTurnPick,
-  } = useSelector(selectGame);
+  const { remainingMatches, currentTurn, computerMatches, maxTurnPick } =
+    useSelector(selectGame);
   const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {
@@ -32,19 +27,12 @@ export default function Game() {
       const computerPick = computerTurnPick(
         remainingMatches,
         computerMatches,
-        playerMatches,
+        maxTurnPick,
       );
 
       dispatch(computerTurn(computerPick));
     }, computerTurnDelay);
-  }, [
-    computerMatches,
-    currentTurn,
-    dispatch,
-    maxTurnPick,
-    playerMatches,
-    remainingMatches,
-  ]);
+  }, [computerMatches, currentTurn, dispatch, maxTurnPick, remainingMatches]);
 
   return (
     <div className={styles.game}>

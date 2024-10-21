@@ -7,27 +7,32 @@ import PlayerInput from './PlayerInput/PlayerInput';
 
 type Props = {
   label: string;
-  status: 'player' | 'computer';
+  status: 'player' | 'computer' | 'finishPlayer' | 'finishComputer';
 };
 export default function GamerCard({ label, status }: Props) {
   const { currentTurn, computerMatches, playerMatches } =
     useSelector(selectGame);
 
-  const isPlayer = status === 'player';
+  const isPlayer = status === 'player' || status === 'finishPlayer';
+  const isFinish = status === 'finishComputer' || status === 'finishPlayer';
 
   return (
     <div
-      className={`${currentTurn !== status ? styles.disable : ''} ${
-        styles.gamerCard
-      } ${!isPlayer && styles.gamerCard_end} `}
+      className={`${
+        !isFinish && currentTurn !== status ? styles.disable : ''
+      } ${styles.gamerCard} ${!isPlayer && styles.gamerCard_end} `}
     >
       <h3 className={styles.cardTitle}>{label}</h3>
       <p className={styles.match}>
         {isPlayer ? playerMatches : computerMatches} matches
       </p>
-      <MatchesBunch matches={isPlayer ? playerMatches : computerMatches} />
 
-      {isPlayer && <PlayerInput />}
+      {!isFinish && (
+        <>
+          <MatchesBunch matches={isPlayer ? playerMatches : computerMatches} />
+          {status === 'player' && <PlayerInput />}
+        </>
+      )}
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { resetSettings, restartGame, selectGame } from '../../store/gameSlice';
 import styles from './finish.module.scss';
 import Button from '../../components/UI/Button/Button';
 import { AppDispatch } from '../../store/store';
+import GamerCard from '../../components/GamerCard/GamerCard';
 
 export default function Finish() {
   const dispatch: AppDispatch = useDispatch();
@@ -24,9 +25,16 @@ export default function Finish() {
 
   return (
     <div className={styles.finish}>
-      <h2>{winner.title}</h2>
+      <h2 className={styles.title}>{winner.title}</h2>
 
       <p>{winner.desc}</p>
+
+      <p className={styles.resultsText}>Game end with</p>
+
+      <div className={styles.players}>
+        <GamerCard label="Player 🙍‍♂️" status="finishPlayer" />
+        <GamerCard label="💻 Computer" status="finishComputer" />
+      </div>
 
       <div className={styles.gameOptions}>
         <Button onClick={() => dispatch(restartGame())}>Start again!</Button>
