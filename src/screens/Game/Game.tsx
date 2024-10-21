@@ -4,8 +4,14 @@ import { useEffect } from 'react';
 import { computerTurnPick } from '../../utils/computerTurnPick';
 import GamerCard from '../../components/GamerCard/GamerCard';
 import MatchesBunch from '../../components/MatchesBunch/MatchesBunch';
-import { computerTurn, selectGame } from '../../store/gameSlice';
+import {
+  computerTurn,
+  resetSettings,
+  restartGame,
+  selectGame,
+} from '../../store/gameSlice';
 import { AppDispatch } from '../../store/store';
+import Button from '../../components/UI/Button/Button';
 
 export default function Game() {
   const {
@@ -51,6 +57,13 @@ export default function Game() {
       <div className={styles.players}>
         <GamerCard label="Player 🙍‍♂️" status="player" />
         <GamerCard label="💻 Computer" status="computer" />
+      </div>
+
+      <div className={styles.gameOptions}>
+        <Button onClick={() => dispatch(restartGame())}>Restart</Button>
+        <Button onClick={() => dispatch(resetSettings())}>
+          Start with new settings
+        </Button>
       </div>
     </div>
   );

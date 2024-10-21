@@ -23,7 +23,7 @@ export default function GamerCard({ label, status }: Props) {
     >
       <h3 className={styles.cardTitle}>{label}</h3>
       <p className={styles.match}>
-        {status} has {isPlayer ? playerMatches : computerMatches} matches
+        {isPlayer ? playerMatches : computerMatches} matches
       </p>
       <MatchesBunch matches={isPlayer ? playerMatches : computerMatches} />
 

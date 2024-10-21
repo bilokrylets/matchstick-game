@@ -28,7 +28,7 @@ export default function PlayerInput() {
 
   return (
     <div className={styles.playerInput}>
-      <p className={styles.label}>Pick matchsticks:</p>
+      <p className={styles.label}>Pick matches:</p>
       <div className={styles.buttonBlock}>
         {buttons.map((value) => (
           <Button
@@ -42,10 +42,8 @@ export default function PlayerInput() {
       </div>
       {isCustomPick && (
         <div className={styles.customPick}>
-          <p className={styles.label}>
-            OR add custom amount from 1 to {maxTurnPick}{' '}
-          </p>
-          <span>
+          <p className={styles.label}>Custom amount from 1 to {maxTurnPick} </p>
+          <span className={styles.customInputContainer}>
             <input
               className={styles.pickInput}
               type="number"

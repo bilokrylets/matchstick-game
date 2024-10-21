@@ -5,6 +5,7 @@ import { InitialStateType } from './types';
 const initialState: InitialStateType = {
   gameStatus: 'settings',
   startMatches: 25,
+  firstTurn: 'player',
   remainingMatches: 25,
   maxTurnPick: 3,
   playerMatches: 0,
@@ -19,9 +20,10 @@ export const gameSlice = createSlice({
     startGame: (state, action) => {
       state.gameStatus = 'game';
       state.startMatches = action.payload.startMatches;
+      state.firstTurn = action.payload.firstTurn;
       state.remainingMatches = action.payload.startMatches;
       state.maxTurnPick = action.payload.maxTurnPick;
-      state.currentTurn = action.payload.currentTurn;
+      state.currentTurn = action.payload.firstTurn;
     },
     playerTurn: (state, action) => {
       state.remainingMatches -= action.payload;
@@ -38,11 +40,27 @@ export const gameSlice = createSlice({
     finishGame: (state) => {
       state.gameStatus = 'finish';
     },
+    restartGame: (state) => {
+      state.gameStatus = 'game';
+      state.remainingMatches = state.startMatches;
+      state.playerMatches = 0;
+      state.computerMatches = 0;
+      state.currentTurn = state.firstTurn;
+    },
+    resetSettings: (state) => {
+      state.gameStatus = 'settings';
+    },
   },
 });
 
-export const { startGame, playerTurn, computerTurn, finishGame } =
-  gameSlice.actions;
+export const {
+  startGame,
+  playerTurn,
+  computerTurn,
+  finishGame,
+  restartGame,
+  resetSettings,
+} = gameSlice.actions;
 
 export const selectGame = (state: RootState) => state.game;
 

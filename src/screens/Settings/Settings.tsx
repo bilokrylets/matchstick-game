@@ -20,7 +20,7 @@ export default function Settings() {
       startGame({
         startMatches: startMatches,
         maxTurnPick: maxMatchPerTurn,
-        currentTurn: firstTurn,
+        firstTurn: firstTurn,
       }),
     );
   }
