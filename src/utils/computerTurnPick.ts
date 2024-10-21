@@ -20,7 +20,11 @@ export function computerTurnPick(
   if (isWiningTurn) {
     if (!((computerMatches + maxPossiblePick) % 2)) {
       return maxPossiblePick;
-    } else return maxPossiblePick - 1;
+    } else if (remainingMatches === maxTurnPick + 1) {
+      return 1;
+    } else {
+      return maxPossiblePick - 1;
+    }
   }
 
   const winingTurnSetupZone = maxTurnPick * 2 + 2;
@@ -31,7 +35,7 @@ export function computerTurnPick(
   }
 
   // check if player can setup win
-  if (remainingMatches - maxTurnPick <= winingTurnSetupZone) {
+  if (remainingMatches - maxTurnPick < winingTurnSetupZone) {
     return remainingMatches - winingTurnSetupZone + 1;
   }
 
