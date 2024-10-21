@@ -22,6 +22,8 @@ export const gameSlice = createSlice({
       state.startMatches = action.payload.startMatches;
       state.firstTurn = action.payload.firstTurn;
       state.remainingMatches = action.payload.startMatches;
+      state.playerMatches = 0;
+      state.computerMatches = 0;
       state.maxTurnPick = action.payload.maxTurnPick;
       state.currentTurn = action.payload.firstTurn;
     },

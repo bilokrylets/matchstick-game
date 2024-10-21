@@ -11,6 +11,8 @@ export function computerTurnPick(
 
   const maxPossiblePick = Math.min(remainingMatches, maxTurnPick);
 
+  if (maxPossiblePick === 1) return 1;
+
   //check is it win turn
   const isWiningTurn = remainingMatches <= maxTurnPick + 1;
 
@@ -34,6 +36,5 @@ export function computerTurnPick(
   }
 
   //usual move,no win or win setup possible
-  console.log(3);
-  return Math.floor(Math.random() * maxTurnPick) + 1;
+  return Math.floor(Math.random() * maxPossiblePick) + 1;
 }
