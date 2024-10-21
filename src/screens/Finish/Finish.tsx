@@ -26,9 +26,7 @@ export default function Finish() {
   return (
     <div className={styles.finish}>
       <h2 className={styles.title}>{winner.title}</h2>
-
       <p>{winner.desc}</p>
-
       <p className={styles.resultsText}>Game end with</p>
 
       <div className={styles.players}>

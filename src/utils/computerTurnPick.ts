@@ -25,7 +25,7 @@ export function computerTurnPick(
 
   //setup wining turn (left opponent with (maxTurnPick + 2) matches)
   if (remainingMatches <= winingTurnSetupZone) {
-    return Math.abs(maxTurnPick + 2 - remainingMatches);
+    return Math.max(Math.abs(maxTurnPick + 2 - remainingMatches), 1);
   }
 
   // check if player can setup win
@@ -34,5 +34,6 @@ export function computerTurnPick(
   }
 
   //usual move,no win or win setup possible
+  console.log(3);
   return Math.floor(Math.random() * maxTurnPick) + 1;
 }

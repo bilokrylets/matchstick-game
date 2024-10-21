@@ -25,7 +25,7 @@ export default function Settings() {
     );
   }
 
-  const maxPickRange = Math.ceil(startMatches / 2) - 1;
+  const maxPickRange = Math.floor(startMatches / 2);
 
   function HandleStartMatches(e: React.ChangeEvent<HTMLInputElement>) {
     let matchNumber = +e.target.value;

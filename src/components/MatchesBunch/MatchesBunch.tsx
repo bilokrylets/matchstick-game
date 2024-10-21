@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux';
-
 import Match from './Match/Match';
 import { useMemo, useState } from 'react';
 import styles from './matchesBunch.module.scss';

@@ -8,7 +8,7 @@ type Props = {
   isHidden: boolean;
 };
 
-const Match = memo(function Match({
+const Match = memo(function ({
   rotation,
   coordinateX,
   coordinateY,
